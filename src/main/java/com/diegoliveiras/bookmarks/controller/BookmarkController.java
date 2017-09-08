@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.diegoliveiras.bookmarks.model.Bookmark;
+import com.diegoliveiras.bookmarks.repository.Bookmarks;
 
 @Controller
 @RequestMapping("/bookmarks")
@@ -22,10 +23,15 @@ public class BookmarkController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(Bookmark bookmark) {
-		bookmarks.save(bookmark);
-		
 		ModelAndView mv = new ModelAndView ("NewBookmark");
-		mv.addObject("message", "Bookmark saved with success!");
+		if (bookmarks.save(bookmark) != null) {
+			mv.addObject("success", "Bookmark saved with success!");
+		}
+		else {
+			mv.addObject("danger", "Bookmark could not be created");
+		}
+	
+		
 		
 		return mv;
 	}
