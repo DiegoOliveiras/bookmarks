@@ -6,3 +6,19 @@
 	margin: 1px;
 	width: 35px;
 }
+
+#comment {
+	overflow: auto;
+	height: 160px;
+	resize: none;
+}
+
+.form-group {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.panel-default {
+	margin-left: 10px;
+	margin-right: 10px;
+}

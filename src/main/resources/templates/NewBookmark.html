@@ -21,15 +21,34 @@
 	<form class="form horizontal">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">New Bookmark</h3>
+				<h3 class="panel-title">Create a new Bookmark</h3>
 			</div>
+			
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="title" class="col-sm-2 control-label">Title:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="title"/>
+						<input type="text" class="form-control" id="title" />
+					</div>
+				</div> <br/>
+				<div class="form-group">
+					<label for="marking" class="col-sm-2 control-label">Marking:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="marking" />
+					</div>
+				</div> <br/>
+				<div class="form-group">
+					<label for="comment" class="col-sm-2 control-label">Comment:</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" id="comment"></textarea>
+					</div>
+				</div> <br/>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary" style="margin-top: 20px;">Create</button>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</form>
