@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
@@ -18,7 +19,12 @@
 		</div>
 	</nav>
 
-	<form class="form horizontal">
+	<form class="form horizontal" method="POST" action="/bookmarks">
+		<div class="alert alert-success alert-dismissable" role="alert" th:if="${!#strings.isEmpty(message)}">
+			<button type="button" class="close" data-dismiss="alert"></button>
+			<span th:text="${message}"></span>		
+		</div>
+	
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Create a new Bookmark</h3>
@@ -28,19 +34,19 @@
 				<div class="form-group">
 					<label for="title" class="col-sm-2 control-label">Title:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="title" />
+						<input type="text" class="form-control" id="title" name="title" required="required"/>
 					</div>
 				</div> <br/>
 				<div class="form-group">
-					<label for="marking" class="col-sm-2 control-label">Marking:</label>
+					<label for="marking" class="col-sm-2 control-label" >Marking:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="marking" />
+						<input type="text" class="form-control" id="marking" name="marking" required="required"/>
 					</div>
 				</div> <br/>
 				<div class="form-group">
 					<label for="comment" class="col-sm-2 control-label">Comment:</label>
 					<div class="col-sm-4">
-						<textarea class="form-control" id="comment"></textarea>
+						<textarea class="form-control" id="comment" name="comment" ></textarea>
 					</div>
 				</div> <br/>
 				<div class="form-group">
