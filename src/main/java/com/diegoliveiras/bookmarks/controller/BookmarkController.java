@@ -21,6 +21,11 @@ public class BookmarkController {
 		return "NewBookmark";
 	}
 	
+	@RequestMapping
+	public String list() {
+		return "ListBookmark";
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(Bookmark bookmark) {
 		ModelAndView mv = new ModelAndView ("NewBookmark");
@@ -29,9 +34,7 @@ public class BookmarkController {
 		}
 		else {
 			mv.addObject("danger", "Bookmark could not be created");
-		}
-	
-		
+		}		
 		
 		return mv;
 	}

@@ -1,24 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1" />
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
-<title>New Bookmark</title>
-</head>
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
 
-<body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#"> <img alt="IFF" id="brand"
-					src="/images/iff-logo.png" />
-				</a>
-			</div>
-		</div>
-	</nav>
-
+<section layout:fragment="content">
 	<form class="form horizontal" method="POST" action="/bookmarks">
 		<div class="alert alert-success alert-dismissable" role="alert" th:if="${!#strings.isEmpty(success)}">
 			<button type="button" class="close" data-dismiss="alert"></button>
@@ -62,7 +48,5 @@
 			</div>
 		</div>
 	</form>
-
-	<script src="/js/bootstrap.min.js"></script>
-</body>
+</section>
 </html>
