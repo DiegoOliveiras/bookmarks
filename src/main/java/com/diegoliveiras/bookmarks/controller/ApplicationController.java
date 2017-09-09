@@ -19,7 +19,7 @@ public class ApplicationController {
 			model.addAttribute("danger", "Your username and password is invalid.");
 		if (logout != null)
 			model.addAttribute("success", "You have been logged out successfully.");
-		return "home";
+		return "login";
 	}
 
 }

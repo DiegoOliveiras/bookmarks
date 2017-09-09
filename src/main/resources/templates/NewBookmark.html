@@ -10,7 +10,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="clearfix">
-					<a class="btn btn-link link-panel" href="/bookmarks">Bookmarks Listing</a>
+					<a class="btn btn-link link-panel" href="/bookmarks">Bookmarks
+						Listing</a>
 					<h3 class="panel-title title-panel">Create a new Bookmark</h3>
 				</div>
 			</div>
@@ -41,6 +42,8 @@
 				<br />
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" />
 						<button type="submit" class="btn btn-primary"
 							style="margin-top: 20px;">Create</button>
 					</div>
