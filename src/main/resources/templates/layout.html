@@ -17,7 +17,7 @@
 				</a>
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
-					<li><a href="/users">Users</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="#">Titles</a></li>
 					<li class="dropdown" sec:authorize="isAuthenticated()"><a
 						href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">Bookmarks
@@ -35,11 +35,6 @@
 					</li>
 				</ul>
 			</div>
-<<<<<<< HEAD
-			<a href="/login"><button type="button"
-					class="btn btn-default navbar-btn btn-panel">Sign in</button></a>
-
-=======
 			<div sec:authorize="!isAuthenticated()">
 				<form th:action="@{/login}" method="get"
 					class="navbar-form navbar-right" title="Login" rel="tooltip">
@@ -53,7 +48,6 @@
 					<button class="btn btn-default btn-sm">Sign Out</button>
 				</form>
 			</div>
->>>>>>> Spring-Security
 		</div>
 	</nav>
 	<div class="alert alert-success alert-dismissable" role="alert"
