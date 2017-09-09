@@ -9,7 +9,10 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Bookmarks Listing</h3>
+			<div class="clearfix">
+				<a class="btn btn-link link-panel" href="/bookmarks/new">New Bookmark</a>
+				<h3 class="panel-title title-panel">Bookmarks Listing</h3>
+			</div>
 		</div>
 
 		<div class="panel-body">
@@ -23,8 +26,18 @@
 					</tr>
 				</thead>
 				<tbody>
+					<tr th:each="bookmark : ${bookmarks}">
+						<td class="text-center" th:text="${bookmark.id}"></td>
+						<td class="" th:text="${bookmark.title}"></td>
+						<td class="" th:text="${bookmark.marking}"></td>
+						<td class="" th:text="${bookmark.comment}"></td>
+					</tr>
 					<tr>
-						<td class="text-center" colspan="4">No bookmarks to show</td>
+						<td colspan="4" th:if="${#lists.isEmpty(bookmarks)}">
+						There are no bookmarks yet! Click
+						<a class="btn btn-link inline-link" href="/bookmarks/new">here</a>
+						to create a new one!
+						</td>
 					</tr>
 				</tbody>
 			</table>

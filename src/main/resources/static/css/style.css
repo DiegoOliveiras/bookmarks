@@ -22,3 +22,18 @@
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+.link-panel {
+	float: right;
+	padding: 0px;
+}
+
+.inline-link {
+	padding: 0px;
+	padding-bottom: 1.7px;
+}
+
+.title-panel {
+	float: left;
+	padding-top: 2px;
+}

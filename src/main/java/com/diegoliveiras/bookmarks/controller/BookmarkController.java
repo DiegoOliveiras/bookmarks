@@ -1,5 +1,7 @@
 package com.diegoliveiras.bookmarks.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.diegoliveiras.bookmarks.model.Bookmark;
 import com.diegoliveiras.bookmarks.repository.Bookmarks;
+
+
 
 @Controller
 @RequestMapping("/bookmarks")
@@ -22,20 +26,28 @@ public class BookmarkController {
 	}
 	
 	@RequestMapping
-	public String list() {
-		return "ListBookmark";
+	public ModelAndView list() {
+		ModelAndView mv = new ModelAndView ("ListBookmark");
+		List<Bookmark> allBookmarks = bookmarks.findAll();
+		
+		mv.addObject("bookmarks", allBookmarks);
+		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(Bookmark bookmark) {
-		ModelAndView mv = new ModelAndView ("NewBookmark");
+		
 		if (bookmarks.save(bookmark) != null) {
-			mv.addObject("success", "Bookmark saved with success!");
+			ModelAndView mv = list();
+			
+			mv.addObject("success", "Bookmark created with success!");
+
+			return mv;
 		}
 		else {
+			ModelAndView mv = new ModelAndView ("NewBookmark");
 			mv.addObject("danger", "Bookmark could not be created");
+			return mv;
 		}		
-		
-		return mv;
 	}
 }

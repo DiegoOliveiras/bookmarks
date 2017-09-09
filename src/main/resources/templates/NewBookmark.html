@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorator="layout">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 
 <section layout:fragment="content">
 	<form class="form horizontal" method="POST" action="/bookmarks">
-		<div class="alert alert-success alert-dismissable" role="alert" th:if="${!#strings.isEmpty(success)}">
-			<button type="button" class="close" data-dismiss="alert"></button>
-			<span th:text="${success}"></span>		
-		</div>
-		<div class="alert alert-danger alert-dismissable" role="alert" th:if="${!#strings.isEmpty(danger)}">
-			<button type="button" class="close" data-dismiss="alert"></button>
-			<span th:text="${danger}"></span>		
-		</div>
-	
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Create a new Bookmark</h3>
+				<div class="clearfix">
+					<a class="btn btn-link link-panel" href="/bookmarks">Bookmarks Listing</a>
+					<h3 class="panel-title title-panel">Create a new Bookmark</h3>
+				</div>
 			</div>
-			
+
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="title" class="col-sm-2 control-label">Title:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="title" name="title" required="required"/>
+						<input type="text" class="form-control" id="title" name="title"
+							required="required" />
 					</div>
-				</div> <br/>
+				</div>
+				<br />
 				<div class="form-group">
-					<label for="marking" class="col-sm-2 control-label" >Marking:</label>
+					<label for="marking" class="col-sm-2 control-label">Marking:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="marking" name="marking" required="required"/>
+						<input type="text" class="form-control" id="marking"
+							name="marking" required="required" />
 					</div>
-				</div> <br/>
+				</div>
+				<br />
 				<div class="form-group">
 					<label for="comment" class="col-sm-2 control-label">Comment:</label>
 					<div class="col-sm-4">
-						<textarea class="form-control" id="comment" name="comment" ></textarea>
-					</div>
-				</div> <br/>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary" style="margin-top: 20px;">Create</button>
+						<textarea class="form-control" id="comment" name="comment"></textarea>
 					</div>
 				</div>
-				
+				<br />
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary"
+							style="margin-top: 20px;">Create</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</form>
