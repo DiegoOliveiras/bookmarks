@@ -36,9 +36,9 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping("/signin")
+	@RequestMapping("/login")
 	public String signIn() {
-		return "SignIn";
+		return "Login";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
