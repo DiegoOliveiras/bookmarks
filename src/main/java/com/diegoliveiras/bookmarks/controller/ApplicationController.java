@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping()
+@RequestMapping("/")
 public class ApplicationController {
-	@RequestMapping("/home")
+	@RequestMapping("")
 	public String home() {
 		return "Home";
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
@@ -21,4 +22,16 @@ public class ApplicationController {
 			model.addAttribute("message", "Deslogado com sucesso, Até mais....");
 		return "login";
 	}
+=======
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model, String error, String logout) {
+		if (error != null)
+			model.addAttribute("danger", "Your username and password is invalid.");
+		if (logout != null)
+			model.addAttribute("success", "You have been logged out successfully.");
+		return "login";
+	}
+
+>>>>>>> Spring-Security
 }

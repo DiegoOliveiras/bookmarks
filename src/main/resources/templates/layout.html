@@ -16,25 +16,46 @@
 					id="brand" src="/images/bookmark-logo.png" />
 				</a>
 				<ul class="nav navbar-nav">
-					<li><a href="/home">Home</a></li>
+					<li><a href="/">Home</a></li>
 					<li><a href="/users">Users</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Bookmarks <span class="caret"></span></a>
+					<li class="dropdown" sec:authorize="isAuthenticated()"><a
+						href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">Bookmarks
+							<span class="caret"></span>
+					</a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Manage Yours</a></li>
 							<li><a href="/bookmarks">See all Bookmarks</a></li>
 						</ul></li>
 
 					<li><a href="#">About</a></li>
+					<li class="text-center"
+						th:if="${#httpServletRequest.remoteUser != null}"><a
+						th:text="'Hello '+ ${#httpServletRequest.remoteUser} +', what will we bookmark today?'"></a>
+					</li>
 				</ul>
 			</div>
+<<<<<<< HEAD
 			<a href="/login"><button type="button"
 					class="btn btn-default navbar-btn btn-panel">Sign in</button></a>
 
+=======
+			<div sec:authorize="!isAuthenticated()">
+				<form th:action="@{/login}" method="get"
+					class="navbar-form navbar-right" title="Login" rel="tooltip">
+					<button class="btn btn-default btn-sm">Sign in</button>
+				</form>
+			</div>
+			<div sec:authorize="isAuthenticated()">
+				<!--/* When using CSRF this needs to be a POST */-->
+				<form th:action="@{/logout}" method="post"
+					class="navbar-form navbar-right" title="Logout" rel="tooltip">
+					<button class="btn btn-default btn-sm">Sign Out</button>
+				</form>
+			</div>
+>>>>>>> Spring-Security
 		</div>
 	</nav>
-
 	<div class="alert alert-success alert-dismissable" role="alert"
 		th:if="${!#strings.isEmpty(success)}">
 		<span th:text="${success}"></span>
@@ -46,7 +67,8 @@
 
 	<section layout:fragment="content"></section>
 
-	<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/application.js"></script>
 </body>
 </html>
