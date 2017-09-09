@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<section layout:fragment="content">
+	<form class="form horizontal" method="POST" action="/users">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<a class="btn btn-link link-panel" href="#">Users?</a>
+					<h3 class="panel-title title-panel">Create a new User</h3>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="name" name="name"
+							required="required" />
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<label for="email" class="col-sm-2 control-label">E-mail:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="email" name="email"
+							required="required" />
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<label for="password" class="col-sm-2 control-label">Password:</label>
+					<div class="col-sm-4">
+						<input type="password" class="form-control" id="password"
+							name="password" required="required" />
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<label for="rep_password" class="col-sm-2 control-label">Repeat
+						Password:</label>
+					<div class="col-sm-4">
+						<input type="password" class="form-control" id="rep_password"
+							required="required" />
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary"
+							style="margin-top: 20px;">Create</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</section>
+</html>

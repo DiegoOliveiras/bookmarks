@@ -46,7 +46,7 @@ public class BookmarkController {
 		}
 		else {
 			ModelAndView mv = new ModelAndView ("NewBookmark");
-			mv.addObject("danger", "Bookmark could not be created");
+			mv.addObject("danger", "Bookmark could not be created.");
 			return mv;
 		}		
 	}

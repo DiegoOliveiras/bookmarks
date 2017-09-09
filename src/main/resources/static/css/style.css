@@ -37,3 +37,7 @@
 	float: left;
 	padding-top: 2px;
 }
+
+.btn-panel {
+	float: right;
+}

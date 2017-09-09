@@ -5,22 +5,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 @Entity
 public class Bookmark {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private long userId;
 	private String title;
 	private String comment;
 	private String marking;
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public long getUserId() {
+		return userId;
+	}
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public String getTitle() {
 		return title;
