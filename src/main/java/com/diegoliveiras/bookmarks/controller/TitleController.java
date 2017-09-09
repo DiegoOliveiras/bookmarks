@@ -12,8 +12,4 @@ public class TitleController {
 	@Autowired
 	private Titles titles;
 	
-	@RequestMapping("/new")
-	public String create() {
-		return "NewUser";
-	}
 }
