@@ -10,7 +10,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
-				<h3 class="panel-title title-panel">Users Listing</h3>
+				<h3 class="panel-title title-panel">Titles Listing</h3>
 			</div>
 		</div>
 
@@ -18,9 +18,11 @@
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th class="text-center col-md-2">Picture</th>
+						<th class="text-center col-md-1">Picture</th>
 						<th class="col-md-3">Name</th>
-						<th class="text-center col-md-2">Bookmarks Counting</th>
+						<th class="col-md-3">Description</th>
+						<th class="col-md-2">Creator</th>
+						<th class="text-center col-md-1">Bookmarks Counting</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -30,10 +32,10 @@
 						<td class="text-center" >-</td>
 					</tr>
 					<tr>
-						<td class="text-center" colspan="3" th:if="${#lists.isEmpty(users)}">
-						There are no users yet! Click
-						<a class="btn btn-link inline-link" href="/users/new">here</a>
-						to register!
+						<td class="text-center" colspan="5" th:if="${#lists.isEmpty(users)}">
+						There are no titles yet! Click
+						<a class="btn btn-link inline-link" href="/titles/new">here</a>
+						to create the first one!
 						</td>
 					</tr>
 				</tbody>

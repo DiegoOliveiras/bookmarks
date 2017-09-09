@@ -14,7 +14,7 @@
 	height: 45px;
 }
 
-#comment {
+.tarea {
 	overflow: auto;
 	height: 160px;
 	resize: none;
