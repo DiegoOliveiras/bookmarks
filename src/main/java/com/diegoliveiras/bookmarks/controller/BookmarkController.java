@@ -2,6 +2,9 @@ package com.diegoliveiras.bookmarks.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -21,60 +24,70 @@ import com.diegoliveiras.bookmarks.repository.Titles;
 @Controller
 @RequestMapping("/bookmarks")
 public class BookmarkController {
-	
+
 	@Autowired
 	private Bookmarks bookmarks;
-	
+
 	@Autowired
 	private Titles titles;
-	
+
 	@RequestMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
 		List<Title> allTitles = titles.findAll();
-		
+
 		mv.addObject("bookmark", new Bookmark());
 		mv.addObject("titles", allTitles);
-		
+
 		return mv;
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable Long id, HttpServletRequest request, 
+			HttpServletResponse response) {
+		
+		System.out.println("passei aqui"+id);		
+		this.bookmarks.delete(id);		
+
+		return "redirect:/bookmarks";
 	}
 	
 	@RequestMapping("/{id}")
 	public ModelAndView edit(@PathVariable Long id) {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
 		mv.addObject("bookmark", bookmarks.findOne(id));
-		
+
 		List<Title> allTitles = titles.findAll();
 		mv.addObject("titles", allTitles);	
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView ("ListBookmark");
-		
+
 		List<Bookmark> allBookmarks = bookmarks.findAll();
 		List<Title> allTitles = titles.findAll();
-		
+
 		mv.addObject("bookmarks", allBookmarks);
 		mv.addObject("titles", allTitles);
 		return mv;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(@Validated Bookmark bookmark, Errors errors) {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
-		
+
 		if (errors.hasErrors()) {
 			List<Title> allTitles = titles.findAll();
-		
+
 			mv.addObject("titles", allTitles);
-			
+
 			mv.addObject("danger", "Bookmark could not be created.");
 			return mv;
 		}
-		
+
 		try {
 			bookmarks.save(bookmark);
 			mv = list();

@@ -67,4 +67,15 @@ public class TitleController {
 		}	
 	}
 	
+	@RequestMapping("/delete/{id}")
+	public ModelAndView delete(@PathVariable Long id) {
+		System.out.println(""+id);
+		
+		this.titles.delete(id);
+		
+		ModelAndView mv = list();		
+		return mv;
+	}
+	
+	
 }

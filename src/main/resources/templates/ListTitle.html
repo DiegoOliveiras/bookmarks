@@ -35,14 +35,13 @@
 						<td class="" th:text="${title.name}"></td>
 						<td class="text-center" th:text="${title.description}"></td>
 						<td class="text-center" th:text="${title.creator}"></td>
-						<td class="text-center">
-							<a class="btn btn-link btn-xs" th:href="@{/titles/{id}(id=${title.id})}">
-								<span class="glyphicon glyphicon-pencil"></span>
-							</a>
-							<a class="btn btn-link btn-xs">
+						<td class="text-center"><a class="btn btn-link btn-xs"
+							th:href="@{/titles/{id}(id=${title.id})}"> <span
+								class="glyphicon glyphicon-pencil"></span>
+						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
+							data-target="#modalDeleteBookmark" th:attr="data-id=${title.id}">
 								<span class="glyphicon glyphicon-remove"></span>
-							</a>
-						</td>
+						</a></td>
 					</tr>
 					<tr>
 						<td class="text-center" colspan="6"
@@ -54,6 +53,9 @@
 				</tbody>
 			</table>
 		</div>
+
+		<div layout:include="_modalDeleteBookmark"></div>
+
 	</div>
 </section>
 </html>
