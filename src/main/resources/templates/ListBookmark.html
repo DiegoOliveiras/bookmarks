@@ -23,19 +23,17 @@
 						<th class="col-md-3">Title</th>
 						<th class="col-md-2">Marking</th>
 						<th class="col-md-4">Comment</th>
-						<th class="text-center col-md-1">User</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="bookmark : ${bookmarks}">
 						<td class="text-center" th:text="${bookmark.id}"></td>
-						<td class="" th:text="${bookmark.title}"></td>
+						<td class="" th:text="${bookmark.title.name}"></td>
 						<td class="" th:text="${bookmark.marking}"></td>
 						<td class="" th:text="${bookmark.comment}"></td>
-						<td class="text-center">-</td>
 					</tr>
 					<tr>
-						<td class="text-center" colspan="5" th:if="${#lists.isEmpty(bookmarks)}">
+						<td class="text-center" colspan="4" th:if="${#lists.isEmpty(bookmarks)}">
 						There are no bookmarks yet! Click
 						<a class="btn btn-link inline-link" href="/bookmarks/new">here</a>
 						to create a new one!

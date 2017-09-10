@@ -19,6 +19,7 @@
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
+						<th class="text-center col-md-1">#</th>
 						<th class="text-center col-md-1">Picture</th>
 						<th class="col-md-3">Name</th>
 						<th class="col-md-3">Description</th>
@@ -27,13 +28,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="user : ${users}">
-						<td class="text-center">-</td>
-						<td class="" th:text="${user.Name}"></td>
+					<tr th:each="title : ${titles}">
+						<td class="text-center" th:text="${title.id}"></td>
 						<td class="text-center" >-</td>
+						<td class="" th:text="${title.name}"></td>
+						<td class="text-center" th:text="${title.description}"></td>
+						<td class="text-center" th:text="${title.creator}"></td>
+						<td class="text-center" th:each="bookmark :${bookmakrs}" th:text="${bookmark}">-</td>
 					</tr>
 					<tr>
-						<td class="text-center" colspan="5" th:if="${#lists.isEmpty(users)}">
+						<td class="text-center" colspan="6" th:if="${#lists.isEmpty(titles)}">
 						There are no titles yet! Click
 						<a class="btn btn-link inline-link" href="/titles/new">here</a>
 						to create the first one!

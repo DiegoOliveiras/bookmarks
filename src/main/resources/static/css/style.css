@@ -14,15 +14,9 @@
 	height: 45px;
 }
 
-.tarea {
-	overflow: auto;
-	height: 160px;
-	resize: none;
-}
-
 .form-group {
-	padding-bottom: 5px;
-	padding-top: 5px;
+	height: 35px;
+	margin-bottom: 10px;
 }
 
 .panel-default, .alert{
@@ -47,4 +41,14 @@
 
 .btn-panel {
 	float: right;
+}
+
+.tarea{
+	height: 160px;
+}
+
+#comment, #description {
+	overflow: auto;
+	height: 160px;
+	resize: none;
 }

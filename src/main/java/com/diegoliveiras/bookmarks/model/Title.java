@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Title {
@@ -18,8 +19,13 @@ public class Title {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private long id_title;
 	
+	@Size(min=3, max=60)
 	private String name;
+	
+	@Size(max=400)
 	private String description;
+	
+	@Size(max=60)
 	private String creator;
 	
 	@OneToMany(mappedBy = "title", targetEntity = Bookmark.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -50,6 +56,7 @@ public class Title {
 		this.creator = creator;
 	}
 	
-	
-	
+	public int getBookmarksCouting() {
+		return bookmarks.size();
+	}
 }
