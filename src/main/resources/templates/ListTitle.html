@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout">
+	layout:decorator="_layout">
 
 
 <section layout:fragment="content">
+	<div layout:include="_message"></div>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -30,17 +31,17 @@
 				<tbody>
 					<tr th:each="title : ${titles}">
 						<td class="text-center" th:text="${title.id}"></td>
-						<td class="text-center" >-</td>
+						<td class="text-center">-</td>
 						<td class="" th:text="${title.name}"></td>
 						<td class="text-center" th:text="${title.description}"></td>
 						<td class="text-center" th:text="${title.creator}"></td>
-						<td class="text-center">-</td>		
+						<td class="text-center">-</td>
 					</tr>
 					<tr>
-						<td class="text-center" colspan="6" th:if="${#lists.isEmpty(titles)}">
-						There are no titles yet! Click
-						<a class="btn btn-link inline-link" href="/titles/new">here</a>
-						to create the first one!
+						<td class="text-center" colspan="6"
+							th:if="${#lists.isEmpty(titles)}">There are no titles yet!
+							Click <a class="btn btn-link inline-link" href="/titles/new">here</a>
+							to create the first one!
 						</td>
 					</tr>
 				</tbody>

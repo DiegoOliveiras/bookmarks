@@ -2,19 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout">
+	layout:decorator="_layout">
 
 <section layout:fragment="content">
 	<form class="form horizontal" method="POST" action="/titles"
 		th:object="${title}">
-		<div class="alert alert-danger alert-dismissable" role="alert"
-			th:if="${#fields.hasAnyErrors()}">
-			<span th:if="${!#strings.isEmpty(danger)}" th:text="${danger}"></span>
-			<div th:each="detailedError : ${#fields.detailedErrors()}">
-				<span th:text="'- ' + ${detailedError.message}"></span>
-			</div>
-
-		</div>
+		
+		<div layout:include="_fieldMessage"></div>
 
 
 		<div class="panel panel-default">
@@ -26,19 +20,19 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				<div class="form-group">
+				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
 					<label for="name" class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="name" name="name" />
 					</div>
 				</div>
-				<div class="form-group tarea">
+				<div class="form-group tarea" th:classappend="${#fields.hasErrors('description')} ? has-error">
 					<label for="description" class="col-sm-2 control-label">Description:</label>
 					<div class="col-sm-4">
 						<textarea class="form-control" id="description" name="description"></textarea>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" th:classappend="${#fields.hasErrors('creator')} ? has-error">
 					<label for="creator" class="col-sm-2 control-label">Creator:</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="creator"
