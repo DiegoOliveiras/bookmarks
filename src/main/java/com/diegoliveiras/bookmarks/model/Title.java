@@ -1,6 +1,7 @@
 package com.diegoliveiras.bookmarks.model;
 
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Title {
 	
@@ -19,13 +22,14 @@ public class Title {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private long id_title;
 	
-	@Size(min=3, max=60)
+	@NotBlank(message = "Name can'''t be empty.")
+	@Size(min=3, max=60, message = "Name  must have more than 3 and less than 60 characters.")
 	private String name;
 	
-	@Size(max=400)
+	@Size(max=400, message = "Description can'''t have more than 400 characters.")
 	private String description;
 	
-	@Size(max=60)
+	@Size(max=60, message = "Creator can'''t have more than 60 characters.")
 	private String creator;
 	
 	@OneToMany(mappedBy = "title", targetEntity = Bookmark.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)

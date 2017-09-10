@@ -24,7 +24,7 @@
 						<th class="col-md-3">Name</th>
 						<th class="col-md-3">Description</th>
 						<th class="col-md-2">Creator</th>
-						<th class="text-center col-md-1">Bookmarks Counting</th>
+						<th class="text-center col-md-1">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,7 +34,7 @@
 						<td class="" th:text="${title.name}"></td>
 						<td class="text-center" th:text="${title.description}"></td>
 						<td class="text-center" th:text="${title.creator}"></td>
-						<td class="text-center" th:each="bookmark :${bookmakrs}" th:text="${bookmark}">-</td>
+						<td class="text-center">-</td>		
 					</tr>
 					<tr>
 						<td class="text-center" colspan="6" th:if="${#lists.isEmpty(titles)}">

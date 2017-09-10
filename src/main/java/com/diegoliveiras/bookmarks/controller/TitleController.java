@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.diegoliveiras.bookmarks.model.Bookmark;
-import com.diegoliveiras.bookmarks.model.Count;
 import com.diegoliveiras.bookmarks.model.Title;
-import com.diegoliveiras.bookmarks.repository.Bookmarks;
 import com.diegoliveiras.bookmarks.repository.Titles;
 
 @Controller
@@ -21,38 +20,39 @@ public class TitleController {
 	@Autowired
 	private Titles titles;
 	
-	@Autowired
-	private Bookmarks bookmarks;
-	
 	@RequestMapping("/new")
-	public String create() {
-		return "NewTitle";
+	public ModelAndView create() {
+		ModelAndView mv = new ModelAndView ("NewTitle");
+		mv.addObject("title", new Title());
+		
+		return mv;
 	}
 	
 	@RequestMapping
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView ("ListTitle");
 		List<Title> allTitles = titles.findAll();
-		List<String> allBookmarks = bookmarks.countByTitle();
-		
+
 		mv.addObject("titles", allTitles);
-		mv.addObject("bookmarks", allBookmarks);
 		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView save(Title title) {
+	public ModelAndView save(@Validated Title title, Errors errors ) {
+		ModelAndView mv = new ModelAndView ("NewTitle");
 		
+		if (errors.hasErrors()) {
+			mv.addObject("danger", "Title could not be created.");
+			return mv;
+		}
 		
 		try {
 			titles.save(title);
-			ModelAndView mv = list();			
+			mv = list();			
 			mv.addObject("success", "Title created with success!");
 			return mv;
 		}catch(Exception e) {
-			
-			ModelAndView mv = new ModelAndView ("NewTitle");
-			mv.addObject("danger", "Bookmark could not be created.");
+			mv.addObject("danger", "Title could not be created.");
 			return mv;
 		}	
 	}

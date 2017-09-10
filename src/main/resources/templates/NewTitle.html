@@ -5,12 +5,23 @@
 	layout:decorator="layout">
 
 <section layout:fragment="content">
-	<form class="form horizontal" method="POST" action="/titles">
+	<form class="form horizontal" method="POST" action="/titles"
+		th:object="${title}">
+		<div class="alert alert-danger alert-dismissable" role="alert"
+			th:if="${#fields.hasAnyErrors()}">
+			<span th:if="${!#strings.isEmpty(danger)}" th:text="${danger}"></span>
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="'- ' + ${detailedError.message}"></span>
+			</div>
+
+		</div>
+
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="clearfix">
-					<a class="btn btn-link link-panel" href="/titles">Titles Listing</a>
+					<a class="btn btn-link link-panel" href="/titles">Titles
+						Listing</a>
 					<h3 class="panel-title title-panel">Create a new Title!</h3>
 				</div>
 			</div>
@@ -18,8 +29,7 @@
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="name" name="name"
-							required="required" />
+						<input type="text" class="form-control" id="name" name="name" />
 					</div>
 				</div>
 				<div class="form-group tarea">

@@ -8,6 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Bookmark {
@@ -19,9 +24,14 @@ public class Bookmark {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_title")	
+	@NotNull(message = "Please, select a title.")
 	private Title title;
 	
+	@Size(max=400, message = "Comment can'''t have more than 400 characters.")
 	private String comment;
+	
+	@NotBlank(message = "Marking can'''t be empty.")
+	@Size(min=3, max=60, message = "Marking must have more than 3 and less than 60 characters.")
 	private String marking;
 	
 	public long getId() {

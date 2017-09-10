@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +31,8 @@ public class BookmarkController {
 	public ModelAndView create() {
 		ModelAndView mv = new ModelAndView ("NewBookmark");
 		List<Title> allTitles = titles.findAll();
+		
+		mv.addObject("bookmark", new Bookmark());
 		mv.addObject("titles", allTitles);
 		
 		return mv;
@@ -47,16 +51,26 @@ public class BookmarkController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView save(Bookmark bookmark) {
+	public ModelAndView save(@Validated Bookmark bookmark, Errors errors) {
+		ModelAndView mv = new ModelAndView ("NewBookmark");
+		
+		if (errors.hasErrors()) {
+			List<Title> allTitles = titles.findAll();
+		
+			mv.addObject("titles", allTitles);
+			
+			mv.addObject("danger", "Bookmark could not be created.");
+			return mv;
+		}
 		
 		try {
 			bookmarks.save(bookmark);
-			ModelAndView mv = list();
+			mv = list();
 			mv.addObject("success", "Bookmark created with success!");
 
 			return mv;
 		}catch (Exception e) {
-			ModelAndView mv = new ModelAndView ("NewBookmark");
+			mv = new ModelAndView ("NewBookmark");
 			mv.addObject("danger", "Bookmark could not be created.");
 			return mv;
 		}		
