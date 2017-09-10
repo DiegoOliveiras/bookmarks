@@ -19,12 +19,13 @@
 				</div>
 			</div>
 			<div class="panel-body">
+				<input type="hidden" th:field="*{id}"/>
 
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('title')} ? has-error">
 					<label for="title" class="col-sm-2 control-label">Title:</label>
 					<div class="col-sm-4">
-						<select class="form-control" name="title">
+						<select class="form-control" th:field="*{title}">
 							<option value="">SELECT A TITLE</option>
 							<option th:each="title : ${titles}" th:value="${title.id}"
 								th:text="${title.name}"></option>
@@ -36,14 +37,14 @@
 					<label for="marking" class="col-sm-2 control-label">Marking:</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="marking"
-							name="marking" />
+							th:field="*{marking}" />
 					</div>
 				</div>
 				<div class="form-group tarea"
 					th:classappend="${#fields.hasErrors('comment')} ? has-error">
 					<label for="comment" class="col-sm-2 control-label">Comment:</label>
 					<div class="col-sm-4">
-						<textarea class="form-control tarea" id="comment" name="comment"></textarea>
+						<textarea class="form-control tarea" id="comment" th:field="*{comment}"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -51,7 +52,7 @@
 						<input type="hidden" th:name="${_csrf.parameterName}"
 							th:value="${_csrf.token}" />
 						<button type="submit" class="btn btn-primary"
-							style="margin-top: 20px;">Create</button>
+							style="margin-top: 20px;">Save</button>
 					</div>
 				</div>
 

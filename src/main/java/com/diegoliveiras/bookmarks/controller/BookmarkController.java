@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,11 +30,22 @@ public class BookmarkController {
 	
 	@RequestMapping("/new")
 	public ModelAndView create() {
-		ModelAndView mv = new ModelAndView ("NewBookmark");
+		ModelAndView mv = new ModelAndView ("FormBookmark");
 		List<Title> allTitles = titles.findAll();
 		
 		mv.addObject("bookmark", new Bookmark());
 		mv.addObject("titles", allTitles);
+		
+		return mv;
+	}
+	
+	@RequestMapping("/{id}")
+	public ModelAndView edit(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView ("FormBookmark");
+		mv.addObject("bookmark", bookmarks.findOne(id));
+		
+		List<Title> allTitles = titles.findAll();
+		mv.addObject("titles", allTitles);	
 		
 		return mv;
 	}
@@ -52,7 +64,7 @@ public class BookmarkController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(@Validated Bookmark bookmark, Errors errors) {
-		ModelAndView mv = new ModelAndView ("NewBookmark");
+		ModelAndView mv = new ModelAndView ("FormBookmark");
 		
 		if (errors.hasErrors()) {
 			List<Title> allTitles = titles.findAll();

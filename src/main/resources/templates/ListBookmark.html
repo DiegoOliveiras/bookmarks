@@ -7,11 +7,12 @@
 
 <section layout:fragment="content">
 	<div layout:include="_message"></div>
-	
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
-				<a class="btn btn-link link-panel" href="/bookmarks/new">New Bookmark</a>
+				<a class="btn btn-link link-panel" href="/bookmarks/new">New
+					Bookmark</a>
 				<h3 class="panel-title title-panel">Bookmarks Listing</h3>
 			</div>
 		</div>
@@ -33,13 +34,18 @@
 						<td class="" th:text="${bookmark.title.name}"></td>
 						<td class="" th:text="${bookmark.marking}"></td>
 						<td class="" th:text="${bookmark.comment}"></td>
-						<td class="text-center">-</td>		
+						<td class="text-center"><a class="btn btn-link btn-xs"
+							th:href="@{/bookmarks/{id}(id=${bookmark.id})}"> <span
+								class="glyphicon glyphicon-pencil"></span>
+						</a> <a class="btn btn-link btn-xs"> <span
+								class="glyphicon glyphicon-remove"></span>
+						</a></td>
 					</tr>
 					<tr>
-						<td class="text-center" colspan="5" th:if="${#lists.isEmpty(bookmarks)}">
-						There are no bookmarks yet! Click
-						<a class="btn btn-link inline-link" href="/bookmarks/new">here</a>
-						to create a new one!
+						<td class="text-center" colspan="5"
+							th:if="${#lists.isEmpty(bookmarks)}">There are no bookmarks
+							yet! Click <a class="btn btn-link inline-link"
+							href="/bookmarks/new">here</a> to create a new one!
 						</td>
 					</tr>
 				</tbody>
