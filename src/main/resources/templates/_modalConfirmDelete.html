@@ -5,18 +5,18 @@
 
 <div class="modal fade" id="modalConfirmDelete" tabindex="-1">
 	<div class="modal-dialog">
-		<form th:attr="data-base-url='/titles'" method="POST">
+		<form th:attr="data-base-url=@{/}" method="POST">
 			<input type="hidden" name="_method" value="DELETE" />
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">Are you sure?</h4>
 				</div>
 				<div class="modal-body">
-					<span>Are you sure you want to delete the title?</span>
+					<span>Please click on Confirm to complete the action.</span>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-					<button type="submit" class="btn btn-primary" data-dismiss="modal">Delete</button>
+					<button type="submit" class="btn btn-primary" >Confirm</button>
 				</div>
 			</div>
 		</form>

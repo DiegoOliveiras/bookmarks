@@ -42,11 +42,8 @@ public class BookmarkController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Long id, HttpServletRequest request, 
-			HttpServletResponse response) {
-		
-		System.out.println("passei aqui"+id);		
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable Long id) {
 		this.bookmarks.delete(id);		
 
 		return "redirect:/bookmarks";

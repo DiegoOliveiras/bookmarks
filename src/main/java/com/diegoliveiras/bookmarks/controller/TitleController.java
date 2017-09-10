@@ -67,14 +67,11 @@ public class TitleController {
 		}	
 	}
 	
-	@RequestMapping("/delete/{id}")
-	public ModelAndView delete(@PathVariable Long id) {
-		System.out.println(""+id);
-		
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable Long id) {		
 		this.titles.delete(id);
-		
-		ModelAndView mv = list();		
-		return mv;
+	
+		return "redirect:/titles";
 	}
 	
 	

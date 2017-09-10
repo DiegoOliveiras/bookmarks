@@ -38,7 +38,9 @@
 							th:href="@{/bookmarks/{id}(id=${bookmark.id})}"> <span
 								class="glyphicon glyphicon-pencil"></span>
 						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
-							data-target="#modalDeleteBookmark" th:attr="data-id=${bookmark.id}">
+							data-target="#modalConfirmDelete"
+							th:attr="data-id=${bookmark.id},
+							data-model='bookmarks'">
 								<span class="glyphicon glyphicon-remove"></span>
 						</a></td>
 					</tr>
@@ -53,7 +55,7 @@
 			</table>
 		</div>
 
-		<div layout:include="_modalDeleteBookmark"></div>
+		<div layout:include="_modalConfirmDelete"></div>
 
 	</div>
 </section>
