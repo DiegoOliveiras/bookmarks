@@ -48,13 +48,6 @@
 							th:field="*{comment}"></textarea>
 					</div>
 				</div>
-				<input type="text" id="date" th:field="*{lastModifiedDate}"/>
-
-				<script type="text/javascript">
-					var d = new Date();
-					document.getElementById('date').value = d.toDateString();
-				
-				</script>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<!-- <input type="hidden" th:name="${_csrf.parameterName}"

@@ -78,19 +78,18 @@ public class BookmarkController {
 
 			mv.addObject("titles", allTitles);
 
-			mv.addObject("danger", "Bookmark could not be created.");
+			mv.addObject("danger", "Bookmark could not be saved.");
 			return mv;
 		}
 
 		try {
 			bookmarks.save(bookmark);
 			mv = list();
-			mv.addObject("success", "Bookmark created with success!");
+			mv.addObject("success", "Bookmark saved with success!");
 
 			return mv;
 		}catch (Exception e) {
-			mv = new ModelAndView ("NewBookmark");
-			mv.addObject("danger", "Bookmark could not be created.");
+			mv.addObject("danger", "Bookmark could not be saved.");
 			return mv;
 		}		
 	}

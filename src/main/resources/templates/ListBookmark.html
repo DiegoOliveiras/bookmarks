@@ -25,7 +25,6 @@
 							<th class="col-md-3">Title</th>
 							<th class="col-md-2">Marking</th>
 							<th class="col-md-4">Comment</th>
-							<th class="text-center col-md-2">Last modified on</th>
 							<th class="text-center col-md-1">Actions</th>
 						</tr>
 					</thead>
@@ -34,7 +33,6 @@
 							<td class="" th:text="${bookmark.title.name}"></td>
 							<td class="" th:text="${bookmark.marking}"></td>
 							<td class="" th:text="${bookmark.comment}"></td>
-							<td class="text-center" th:text="${bookmark.lastModifiedDate}"></td>
 							<td class="text-center"><a class="btn btn-link btn-xs"
 								th:href="@{/bookmarks/{id}(id=${bookmark.id})}"> <span
 									class="glyphicon glyphicon-pencil" title="Edit" rel="tooltip"></span>

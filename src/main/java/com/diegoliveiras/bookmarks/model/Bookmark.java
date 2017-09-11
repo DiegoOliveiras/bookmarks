@@ -32,17 +32,7 @@ public class Bookmark {
 	@NotBlank(message = "Marking can'''t be empty.")
 	@Size(min=3, max=60, message = "Marking must have more than 3 and less than 60 characters.")
 	private String marking;
-	
-	@NotBlank
-	@NotNull
-	private String lastModifiedDate;
-	
-	public String getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-	public void setLastModifiedDate(String lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
+
 	public long getId() {
 		return id_bookmark;
 	}
