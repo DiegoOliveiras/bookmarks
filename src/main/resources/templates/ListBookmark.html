@@ -36,12 +36,13 @@
 						<td class="" th:text="${bookmark.comment}"></td>
 						<td class="text-center"><a class="btn btn-link btn-xs"
 							th:href="@{/bookmarks/{id}(id=${bookmark.id})}"> <span
-								class="glyphicon glyphicon-pencil"></span>
+								class="glyphicon glyphicon-pencil" title="Edit" rel="tooltip"></span>
 						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
 							data-target="#modalConfirmDelete"
 							th:attr="data-id=${bookmark.id},
-							data-model='bookmarks'">
-								<span class="glyphicon glyphicon-remove"></span>
+							data-model='bookmarks'"
+							title="Delete" rel="tooltip"> <span
+								class="glyphicon glyphicon-remove"></span>
 						</a></td>
 					</tr>
 					<tr>

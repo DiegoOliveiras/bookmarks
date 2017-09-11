@@ -1,5 +1,7 @@
 package com.diegoliveiras.bookmarks.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,6 @@ public class TitleController {
 	public ModelAndView edit(@PathVariable Long id) {
 		ModelAndView mv = new ModelAndView ("FormTitle");
 		mv.addObject("title", titles.findOne(id));
-		
 		
 		return mv;
 	}

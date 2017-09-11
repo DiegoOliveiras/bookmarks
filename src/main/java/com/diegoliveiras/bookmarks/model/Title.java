@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+
 @Entity
 public class Title {
 	
@@ -35,6 +36,27 @@ public class Title {
 	@OneToMany(mappedBy = "title", targetEntity = Bookmark.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Bookmark> bookmarks;
 	
+	private byte[] picture;
+	
+	public byte[] getPicture() {
+		return picture;
+	}
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
+	}
+	public long getId_title() {
+		return id_title;
+	}
+	public void setId_title(long id_title) {
+		this.id_title = id_title;
+	}
+	public Set<Bookmark> getBookmarks() {
+		return bookmarks;
+	}
+	public void setBookmarks(Set<Bookmark> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+
 	public long getId() {
 		return id_title;
 	}
