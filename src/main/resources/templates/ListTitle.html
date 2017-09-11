@@ -17,45 +17,47 @@
 		</div>
 
 		<div class="panel-body">
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th class="text-center col-md-1">#</th>
-						<th class="text-center col-md-1">Picture</th>
-						<th class="col-md-3">Name</th>
-						<th class="col-md-3">Description</th>
-						<th class="col-md-2">Creator</th>
-						<th class="text-center col-md-1">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="title : ${titles}">
-						<td class="text-center" th:text="${title.id}"></td>
-						<td class="text-center"><img alt="-"
-							th:attr="src=@{data:image/jpeg;base64,${title.picture}}" /></td>
-						<td class="" th:text="${title.name}"></td>
-						<td class="text-center" th:text="${title.description}"></td>
-						<td class="text-center" th:text="${title.creator}"></td>
-						<td class="text-center"><a class="btn btn-link btn-xs"
-							th:href="@{/titles/{id}(id=${title.id})}"> <span
-								class="glyphicon glyphicon-pencil" title="Edit" rel="tooltip"></span>
-						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
-							data-target="#modalConfirmDelete"
-							th:attr="data-id=${title.id},
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center col-md-1">#</th>
+							<th class="text-center col-md-1">Picture</th>
+							<th class="col-md-3">Name</th>
+							<th class="col-md-3">Description</th>
+							<th class="col-md-2">Creator</th>
+							<th class="text-center col-md-1">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="title : ${titles}">
+							<td class="text-center" th:text="${title.id}"></td>
+							<td class="text-center"><img alt="-"
+								th:attr="src=@{data:image/jpeg;base64,${title.picture}}" /></td>
+							<td class="" th:text="${title.name}"></td>
+							<td class="text-center" th:text="${title.description}"></td>
+							<td class="text-center" th:text="${title.creator}"></td>
+							<td class="text-center"><a class="btn btn-link btn-xs"
+								th:href="@{/titles/{id}(id=${title.id})}"> <span
+									class="glyphicon glyphicon-pencil" title="Edit" rel="tooltip"></span>
+							</a> <a class="btn btn-link btn-xs" data-toggle="modal"
+								data-target="#modalConfirmDelete"
+								th:attr="data-id=${title.id},
 							data-model='titles'"
-							title="Delete" rel="tooltip"> <span
-								class="glyphicon glyphicon-remove"></span>
-						</a></td>
-					</tr>
-					<tr>
-						<td class="text-center" colspan="6"
-							th:if="${#lists.isEmpty(titles)}">There are no titles yet!
-							Click <a class="btn btn-link inline-link" href="/titles/new">here</a>
-							to create the first one!
-						</td>
-					</tr>
-				</tbody>
-			</table>
+								title="Delete" rel="tooltip"> <span
+									class="glyphicon glyphicon-remove"></span>
+							</a></td>
+						</tr>
+						<tr>
+							<td class="text-center" colspan="6"
+								th:if="${#lists.isEmpty(titles)}">There are no titles yet!
+								Click <a class="btn btn-link inline-link" href="/titles/new">here</a>
+								to create the first one!
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
 		<div layout:include="_modalConfirmDelete"></div>

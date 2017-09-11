@@ -1,12 +1,20 @@
-.navbar-brand{
+/*Tela Grande*/
+@media ( min-width : 768px) {
+	.panel-default, .alert {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}
+
+.navbar-brand {
 	padding: 0px;
 }
 
 #home {
-	width:50%;
+	width: 50%;
 	border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 5px;
+	border-radius: 20px;
+	padding: 5px;
 }
 
 #brand {
@@ -17,11 +25,6 @@
 .form-group {
 	height: 35px;
 	margin-bottom: 10px;
-}
-
-.panel-default, .alert{
-	margin-left: 10px;
-	margin-right: 10px;
 }
 
 .link-panel {
@@ -43,7 +46,7 @@
 	float: right;
 }
 
-.tarea{
+.tarea {
 	height: 160px;
 }
 
