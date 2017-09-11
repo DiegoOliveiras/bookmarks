@@ -21,7 +21,6 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th class="text-center col-md-1">#</th>
 							<th class="text-center col-md-1">Picture</th>
 							<th class="col-md-3">Name</th>
 							<th class="col-md-3">Description</th>
@@ -31,12 +30,11 @@
 					</thead>
 					<tbody>
 						<tr th:each="title : ${titles}">
-							<td class="text-center" th:text="${title.id}"></td>
 							<td class="text-center"><img alt="-"
 								th:attr="src=@{data:image/jpeg;base64,${title.picture}}" /></td>
 							<td class="" th:text="${title.name}"></td>
-							<td class="text-center" th:text="${title.description}"></td>
-							<td class="text-center" th:text="${title.creator}"></td>
+							<td class="" th:text="${title.description}"></td>
+							<td class="" th:text="${title.creator}"></td>
 							<td class="text-center"><a class="btn btn-link btn-xs"
 								th:href="@{/titles/{id}(id=${title.id})}"> <span
 									class="glyphicon glyphicon-pencil" title="Edit" rel="tooltip"></span>

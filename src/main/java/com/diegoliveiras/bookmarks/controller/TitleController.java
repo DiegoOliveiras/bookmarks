@@ -40,7 +40,7 @@ public class TitleController {
 	@RequestMapping
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView ("ListTitle");
-		List<Title> allTitles = titles.findAll();
+		List<Title> allTitles = titles.findAllOrderByName();
 
 		mv.addObject("titles", allTitles);
 		return mv;
