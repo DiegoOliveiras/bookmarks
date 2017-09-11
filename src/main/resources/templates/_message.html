@@ -5,11 +5,13 @@
 
 	<div class="alert alert-success alert-dismissable" role="alert"
 		th:if="${!#strings.isEmpty(success)}">
+		<a href="#" class="close" data-dismiss="alert">&#215;</a>
 		<span th:text="${success}"></span>
 	</div>
 
 	<div class="alert alert-danger alert-dismissable" role="alert"
 		th:if="${!#strings.isEmpty(danger)}">
+		<a href="#" class="close" data-dismiss="alert">&#215;</a>
 		<span th:text="${danger}"></span>
 	</div>
 

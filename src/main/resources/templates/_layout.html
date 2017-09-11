@@ -19,27 +19,20 @@
 				</a>
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
+					<li><a href="/titles">Titles</a></li>
+					<li><a href="/bookmarks">Bookmarks</a></li>
 					<li class="dropdown" sec:authorize="isAuthenticated()"><a
 						href="#" class="dropdown-toggle" data-toggle="dropdown"
-						role="button" aria-haspopup="true" aria-expanded="false">Titles
+						role="button" aria-haspopup="true" aria-expanded="false">Actions
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="/titles">See all Titles</a></li>
 							<li><a href="/titles/new">Create a new Title</a></li>
-						</ul></li>
-					<li class="dropdown" sec:authorize="isAuthenticated()"><a
-						href="#" class="dropdown-toggle" data-toggle="dropdown"
-						role="button" aria-haspopup="true" aria-expanded="false">Bookmarks
-							<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="/bookmarks">See all Bookmarks</a></li>
 							<li><a href="/bookmarks/new">Create a new Bookmark</a></li>
 						</ul></li>
-					<li><a href="#">About</a></li>
 					<li class="text-center"
 						th:if="${#httpServletRequest.remoteUser != null}"><a
+						id="hello"
 						th:text="'Hello '+ ${#httpServletRequest.remoteUser} +', what will we bookmark today?'"></a>
 					</li>
 				</ul>
@@ -61,6 +54,10 @@
 	</nav>
 
 	<section layout:fragment="content"></section>
+
+
+
+	<div layout:include="_footer"></div>
 
 	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

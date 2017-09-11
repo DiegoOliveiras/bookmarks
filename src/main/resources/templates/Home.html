@@ -5,23 +5,18 @@
 	layout:decorator="_layout">
 
 <section layout:fragment="content">
-		<div layout:include="_message"></div>
+	<div layout:include="_message"></div>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="clearfix">
-					<a class="btn btn-link link-panel" href="/users/new">Get Started!</a>
-					<h3 class="panel-title title-panel">Welcome to Bookmarks!</h3>
-				</div>
-			</div>
+	<div class="panel-body">
+		<div class="center jumbotron">
+			<h1>BOOKMARKS</h1>
 
-			<div class="panel-body">
-				<div class="clearfix text-center">
-					<h1 >Social Bookmarking</h1>
-					<img alt="Bookmarks"
-						id="home" src="/images/home.jpg" />
-				</div>
+			<div class="text-center" sec:authorize="!isAuthenticated()">
+				<form th:action="@{/login}" method="get">
+					<button class="btn btn-danger btn-lg btn-xlarge">Sign in</button>
+				</form>
 			</div>
 		</div>
+	</div>
 </section>
 </html>
