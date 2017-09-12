@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.diegoliveiras.bookmarks.model.Title;
 import com.diegoliveiras.bookmarks.repository.Titles;
@@ -47,7 +48,7 @@ public class TitleController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView save(@Validated Title title, Errors errors ) {
+	public ModelAndView save(@Validated Title title, Errors errors, RedirectAttributes attr ) {
 		ModelAndView mv = new ModelAndView ("FormTitle");
 		
 		if (errors.hasErrors()) {
@@ -57,9 +58,8 @@ public class TitleController {
 		
 		try {
 			titles.save(title);
-			mv = list();			
-			mv.addObject("success", "Title saved with success!");
-			return mv;
+			attr.addFlashAttribute("success", "Title saved qith success!");
+			return new ModelAndView("redirect:titles");
 		}catch(Exception e) {
 			mv.addObject("danger", "Title could not be saved.");
 			return mv;
@@ -67,9 +67,10 @@ public class TitleController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Long id) {		
+	public String delete(@PathVariable Long id, RedirectAttributes attr) {		
 		this.titles.delete(id);
 	
+		attr.addFlashAttribute("danger", "Title was removed with success.");
 		return "redirect:/titles";
 	}
 	

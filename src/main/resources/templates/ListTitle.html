@@ -49,9 +49,10 @@
 									<span th:text="${title.description}"></span>
 
 								</div>
-								<div class="title-creator" th:if="${!#lists.isEmpty(title.creator)}">
-									<small>Created by: <span th:text="${title.creator}"></span>
-									</small>
+								<div class="title-creator"
+									th:if="${!#lists.isEmpty(title.creator)}">
+									<small><span style="font-weight: bold;">Created
+											by: </span><span th:text="${title.creator}"></span> </small>
 								</div>
 							</div>
 						</div>

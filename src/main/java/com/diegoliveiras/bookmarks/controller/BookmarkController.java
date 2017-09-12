@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.diegoliveiras.bookmarks.model.Bookmark;
 import com.diegoliveiras.bookmarks.model.Title;
@@ -40,9 +41,10 @@ public class BookmarkController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id, RedirectAttributes attr) {
 		this.bookmarks.delete(id);		
 
+		attr.addFlashAttribute("danger", "Bookmark was removed with success.");
 		return "redirect:/bookmarks";
 	}
 	
@@ -68,7 +70,7 @@ public class BookmarkController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView save(@Validated Bookmark bookmark, Errors errors) {
+	public ModelAndView save(@Validated Bookmark bookmark, Errors errors, RedirectAttributes attr) {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
 
 		if (errors.hasErrors()) {
@@ -82,10 +84,9 @@ public class BookmarkController {
 
 		try {
 			bookmarks.save(bookmark);
-			mv = list();
-			mv.addObject("success", "Bookmark saved with success!");
-
-			return mv;
+			
+			attr.addFlashAttribute("success", "Bookmark saved with success!");
+			return new ModelAndView("redirect:bookmarks");
 		}catch (Exception e) {
 			mv.addObject("danger", "Bookmark could not be saved.");
 			return mv;
