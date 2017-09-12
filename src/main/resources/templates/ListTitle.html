@@ -18,43 +18,45 @@
 
 		<div class="panel-body">
 			<div class="table-responsive">
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th class="text-center col-md-1">Picture</th>
-							<th class="col-md-3">Name</th>
-							<th class="col-md-3">Description</th>
-							<th class="col-md-2">Creator</th>
-							<th class="text-center col-md-1">Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="title : ${titles}">
-							<td class="text-center"><img alt="-"
-								th:attr="src=@{data:image/jpeg;base64,${title.picture}}" /></td>
-							<td class="" th:text="${title.name}"></td>
-							<td class="" th:text="${title.description}"></td>
-							<td class="" th:text="${title.creator}"></td>
-							<td class="text-center"><a class="btn btn-link btn-xs"
-								th:href="@{/titles/{id}(id=${title.id})}"> <span
-									class="glyphicon glyphicon-pencil" title="Edit" rel="tooltip"></span>
-							</a> <a class="btn btn-link btn-xs" data-toggle="modal"
-								data-target="#modalConfirmDelete"
-								th:attr="data-id=${title.id},
+				<div class="row" th:if="${#lists.isEmpty(titles)}">
+					<div class="col-xs-8 col-xs-offset-2">
+						<div class="well well-lg">
+							<div class="bookmark-body text-center">
+								There are no titles yet! Click <a
+									class="btn btn-link inline-link" href="/titles/new">here</a> to
+								create a new one!
+							</div>
+						</div>
+					</div>
+				</div>
+				<div th:each="title : ${titles}">
+					<div class="row">
+						<div class="col-xs-8 col-xs-offset-2">
+							<div class="well well-lg">
+								<div class="title-name">
+									<a class="title-name btn btn-link btn-xs"
+										th:href="@{/titles/{id}(id=${title.id})}"> <span
+										th:text="${title.name}"></span>
+									</a> <a class="btn btn-link btn-xs btn-float-right"
+										data-toggle="modal" data-target="#modalConfirmDelete"
+										th:attr="data-id=${title.id},
 							data-model='titles'"
-								title="Delete" rel="tooltip"> <span
-									class="glyphicon glyphicon-remove"></span>
-							</a></td>
-						</tr>
-						<tr>
-							<td class="text-center" colspan="6"
-								th:if="${#lists.isEmpty(titles)}">There are no titles yet!
-								Click <a class="btn btn-link inline-link" href="/titles/new">here</a>
-								to create the first one!
-							</td>
-						</tr>
-					</tbody>
-				</table>
+										title="Delete" rel="tooltip"> <span
+										class="glyphicon glyphicon-remove"></span>
+									</a>
+								</div>
+								<div class="title-body">
+									<span th:text="${title.description}"></span>
+
+								</div>
+								<div class="title-creator" th:if="${!#lists.isEmpty(title.creator)}">
+									<small>Created by: <span th:text="${title.creator}"></span>
+									</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 

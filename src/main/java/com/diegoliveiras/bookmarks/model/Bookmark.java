@@ -26,7 +26,7 @@ public class Bookmark {
 	@NotNull(message = "Please, select a title.")
 	private Title title;
 	
-	@Size(max=400, message = "Comment can'''t have more than 400 characters.")
+	@Size(max=200, message = "Comment can'''t have more than 200 characters.")
 	private String comment;
 	
 	@NotBlank(message = "Marking can'''t be empty.")

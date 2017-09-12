@@ -27,7 +27,7 @@ public class Title {
 	@Size(min=3, max=60, message = "Name  must have more than 3 and less than 60 characters.")
 	private String name;
 	
-	@Size(max=400, message = "Description can'''t have more than 400 characters.")
+	@Size(max=1000, message = "Description can'''t have more than 1000 characters.")
 	private String description;
 	
 	@Size(max=60, message = "Creator can'''t have more than 60 characters.")

@@ -31,7 +31,7 @@ public class BookmarkController {
 	@RequestMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
-		List<Title> allTitles = titles.findAll();
+		List<Title> allTitles = titles.findAllOrderByName();
 
 		mv.addObject("bookmark", new Bookmark());
 		mv.addObject("titles", allTitles);
@@ -51,7 +51,7 @@ public class BookmarkController {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
 		mv.addObject("bookmark", bookmarks.findOne(id));
 
-		List<Title> allTitles = titles.findAll();
+		List<Title> allTitles = titles.findAllOrderByName();
 		mv.addObject("titles", allTitles);	
 
 		return mv;
@@ -61,11 +61,9 @@ public class BookmarkController {
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView ("ListBookmark");
 
-		List<Bookmark> allBookmarks = bookmarks.findAll();
-		List<Title> allTitles = titles.findAll();
+		List<Bookmark> allBookmarks = bookmarks.findAllOrderByTitle();
 
 		mv.addObject("bookmarks", allBookmarks);
-		mv.addObject("titles", allTitles);
 		return mv;
 	}
 
@@ -74,7 +72,7 @@ public class BookmarkController {
 		ModelAndView mv = new ModelAndView ("FormBookmark");
 
 		if (errors.hasErrors()) {
-			List<Title> allTitles = titles.findAll();
+			List<Title> allTitles = titles.findAllOrderByName();
 
 			mv.addObject("titles", allTitles);
 
